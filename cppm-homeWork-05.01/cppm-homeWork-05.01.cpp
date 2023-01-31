@@ -4,43 +4,50 @@
 class Figure
 {
 public:
-	Figure() {};
+	Figure() {
 
-	int get_sides() {
-		name();
-		std::cout << count << std::endl;
+		this->count = count;
+		this->name = name;
+	
+	};
+
+	int get_sides(int count) {
 		return count;
+	}
+
+	std::string get_name(std::string name) {
+		return name;
+	}
+
+	void print_info() {
+
+		std::cout << name;
+		std::cout << count;
+
 	}
 
 protected:
 
-	int count = 0;
-
-	void name() {
-		if (count == 0) {
-			std::cout << "Фигура: ";
-		}
-		else if (count == 3) {
-			std::cout << "Треугольник: ";
-		}
-		else {
-			std::cout << "Четырёхугольник: ";
-		}
-	}
-
+	int count;
+	std::string name;
 };
 
 class Triangle : public Figure
 {
 public:
 
-	void medod() {
+	Triangle(){
 
-		count = 3;
-		get_sides();
+		name = "Треугольник";
+		count = 4;
+		get_name(name);
+		get_sides(count);
 
 	}
-	
+
+	std::string name ;
+	int count; 
+
 };
 
 class Quadrangle : public Figure
@@ -50,7 +57,7 @@ public:
 	void medod() {
 
 		count = 4;
-		get_sides();
+		//get_sides();
 
 	}
 
@@ -65,13 +72,12 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	Triangle tri;
-	Quadrangle qu;
+	//Quadrangle qu;
 
 	std::cout << "Колличество сторон:" << std::endl;
 
-	tri.get_sides();
-	tri.medod();
-	qu.medod();
+	tri.print_info();
+
 
 
 }
