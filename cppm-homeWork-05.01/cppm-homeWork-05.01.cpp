@@ -4,60 +4,48 @@
 class Figure
 {
 public:
-	Figure() {
-
-		this->count = count;
-		this->name = name;
-	
-	};
-
-	int get_sides(int count) {
-		return count;
-	}
-
-	std::string get_name(std::string name) {
-		return name;
-	}
+	Figure() { };
 
 	void print_info() {
 
-		std::cout << name;
-		std::cout << count;
-
+		std::cout << get_name() << ": " << get_sides() << std::endl;
+		
 	}
-
 protected:
 
-	int count;
-	std::string name;
+	int get_sides() {
+		 return sides_count;
+	}
+
+	std::string get_name() {
+		return name;
+	}
+
+	int sides_count = 0;
+	std::string name = "Фигура";
+	
 };
 
 class Triangle : public Figure
 {
 public:
 
-	Triangle(){
+	Triangle() {
 
+		sides_count = 3;
 		name = "Треугольник";
-		count = 4;
-		get_name(name);
-		get_sides(count);
 
 	}
-
-	std::string name ;
-	int count; 
-
 };
 
 class Quadrangle : public Figure
 {
 public:
 
-	void medod() {
+	Quadrangle() {
 
-		count = 4;
-		//get_sides();
+		sides_count = 4;
+		name = "Четырёхугольник";
 
 	}
 
@@ -71,13 +59,15 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	Figure fig;
 	Triangle tri;
-	//Quadrangle qu;
+	Quadrangle qu;
 
 	std::cout << "Колличество сторон:" << std::endl;
 
+	fig.print_info();
 	tri.print_info();
-
+	qu.print_info();
 
 
 }
